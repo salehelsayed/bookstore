@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="bi bi-book"></i> BookStore
+                <i class="bi bi-book"></i> <span data-translate="brand">BookStore</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -24,21 +24,31 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="#" data-translate="home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link" href="#" data-translate="categories">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#" data-translate="about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#" data-translate="contact">Contact</a>
                     </li>
                 </ul>
-                <div class="d-flex">
-                    <button class="btn btn-outline-primary me-2">Sign In</button>
-                    <button class="btn btn-primary">Register</button>
+                <div class="d-flex align-items-center">
+                    <!-- Language Selector -->
+                    <div class="dropdown me-3">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="languageSelector" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-globe"></i> <span data-translate="language">Language</span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="languageSelector">
+                            <li><a class="dropdown-item" href="#" data-language="en"><i class="bi bi-check language-check en"></i> English</a></li>
+                            <li><a class="dropdown-item" href="#" data-language="ar"><i class="bi bi-check language-check ar"></i> العربية</a></li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-outline-primary me-2" data-translate="signin">Sign In</button>
+                    <button class="btn btn-primary" data-translate="register">Register</button>
                 </div>
             </div>
         </div>
@@ -66,50 +76,50 @@
                 <div class="filters-sidebar">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="mb-0">Filters</h5>
+                            <h5 class="mb-0" data-translate="filters">Filters</h5>
                         </div>
                         <div class="card-body">
                             <!-- Genre Filter -->
                             <div class="mb-4">
-                                <h6>Genre</h6>
+                                <h6 data-translate="genre">Genre</h6>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="fiction">
-                                    <label class="form-check-label" for="fiction">Fiction</label>
+                                    <label class="form-check-label" for="fiction" data-translate="fiction">Fiction</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="nonfiction">
-                                    <label class="form-check-label" for="nonfiction">Non-Fiction</label>
+                                    <label class="form-check-label" for="nonfiction" data-translate="nonfiction">Non-Fiction</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="science">
-                                    <label class="form-check-label" for="science">Science</label>
+                                    <label class="form-check-label" for="science" data-translate="science">Science</label>
                                 </div>
                             </div>
 
                             <!-- Language Filter -->
                             <div class="mb-4">
-                                <h6>Language</h6>
+                                <h6 data-translate="language">Language</h6>
                                 <select class="form-select">
-                                    <option selected>All Languages</option>
-                                    <option>English</option>
-                                    <option>Spanish</option>
-                                    <option>French</option>
+                                    <option selected data-translate="allLanguages">All Languages</option>
+                                    <option data-translate="english">English</option>
+                                    <option data-translate="spanish">Spanish</option>
+                                    <option data-translate="french">French</option>
                                 </select>
                             </div>
 
                             <!-- Rating Filter -->
                             <div class="mb-4">
-                                <h6>Rating</h6>
+                                <h6 data-translate="rating">Rating</h6>
                                 <div class="rating-filter">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="rating" id="rating4plus">
-                                        <label class="form-check-label" for="rating4plus">
+                                        <label class="form-check-label" for="rating4plus" data-translate="rating4plus">
                                             <i class="bi bi-star-fill text-warning"></i> 4+ Stars
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="rating" id="rating3plus">
-                                        <label class="form-check-label" for="rating3plus">
+                                        <label class="form-check-label" for="rating3plus" data-translate="rating3plus">
                                             <i class="bi bi-star-fill text-warning"></i> 3+ Stars
                                         </label>
                                     </div>
@@ -117,7 +127,7 @@
                             </div>
 
                             <!-- Clear Filters Button -->
-                            <button class="btn btn-outline-secondary w-100">Clear Filters</button>
+                            <button class="btn btn-outline-secondary w-100" data-translate="clearFilters">Clear Filters</button>
                         </div>
                     </div>
                 </div>
@@ -127,15 +137,13 @@
             <div class="col-lg-9 col-md-8">
                 <!-- View Toggle -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div class="results-count">
-                        Showing 1-12 of 48 books
-                    </div>
+                    <div class="results-count" data-translate="resultsCount">Showing 1-12 of 48 books</div>
                     <div class="view-options">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-outline-secondary active" id="grid-view">
+                            <button type="button" class="btn btn-outline-secondary active" id="grid-view" data-translate="gridView">
                                 <i class="bi bi-grid"></i>
                             </button>
-                            <button type="button" class="btn btn-outline-secondary" id="list-view">
+                            <button type="button" class="btn btn-outline-secondary" id="list-view" data-translate="listView">
                                 <i class="bi bi-list"></i>
                             </button>
                         </div>
@@ -149,17 +157,17 @@
                         <div class="card h-100 book-card">
                             <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Book Cover">
                             <div class="card-body">
-                                <h5 class="card-title">Book Title</h5>
-                                <p class="card-text text-muted">Author Name</p>
+                                <h5 class="card-title" data-translate="bookTitle">Book Title</h5>
+                                <p class="card-text text-muted" data-translate="authorName">Author Name</p>
                                 <div class="rating mb-2">
                                     <i class="bi bi-star-fill text-warning"></i>
                                     <i class="bi bi-star-fill text-warning"></i>
                                     <i class="bi bi-star-fill text-warning"></i>
                                     <i class="bi bi-star-fill text-warning"></i>
                                     <i class="bi bi-star text-warning"></i>
-                                    <small class="text-muted">(4.0)</small>
+                                    <small class="text-muted" data-translate="rating">(4.0)</small>
                                 </div>
-                                <button class="btn btn-primary w-100">
+                                <button class="btn btn-primary w-100" data-translate="downloadPdf">
                                     <i class="bi bi-download"></i> Download PDF
                                 </button>
                             </div>
@@ -172,13 +180,13 @@
                 <nav class="mt-4">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            <a class="page-link" href="#" tabindex="-1" data-translate="previous">Previous</a>
                         </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item active"><a class="page-link" href="#" data-translate="page1">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#" data-translate="page2">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#" data-translate="page3">3</a></li>
                         <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
+                            <a class="page-link" href="#" data-translate="next">Next</a>
                         </li>
                     </ul>
                 </nav>
@@ -189,7 +197,7 @@
     <!-- Footer -->
     <footer class="footer mt-5 py-3 bg-light">
         <div class="container text-center">
-            <span class="text-muted"> 2024 BookStore. All rights reserved.</span>
+            <span class="text-muted" data-translate="copyright"> 2024 BookStore. All rights reserved.</span>
         </div>
     </footer>
 

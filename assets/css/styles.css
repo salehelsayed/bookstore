@@ -127,6 +127,56 @@ main {
     height: 200px;
 }
 
+/* Language Selector Styles */
+.language-check {
+    display: none;
+    margin-right: 8px;
+}
+
+[data-language].active .language-check {
+    display: inline-block;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .me-2,
+[dir="rtl"] .me-3 {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+
+[dir="rtl"] .me-3 {
+    margin-left: 1rem !important;
+}
+
+[dir="rtl"] .ms-auto {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+
+[dir="rtl"] .dropdown-menu {
+    text-align: right;
+}
+
+[dir="rtl"] .bi {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+/* Active language indicator */
+.dropdown-item.active {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+.dropdown-item.active .language-check {
+    display: inline-block;
+    color: #0d6efd;
+}
+
 /* Footer Styles */
 .footer {
     margin-top: auto;

@@ -74,6 +74,118 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Language translations
+const translations = {
+    en: {
+        brand: 'BookStore',
+        home: 'Home',
+        categories: 'Categories',
+        about: 'About',
+        contact: 'Contact',
+        language: 'Language',
+        signin: 'Sign In',
+        register: 'Register',
+        filters: 'Filters',
+        genre: 'Genre',
+        fiction: 'Fiction',
+        nonfiction: 'Non-Fiction',
+        science: 'Science',
+        allLanguages: 'All Languages',
+        english: 'English',
+        spanish: 'Spanish',
+        french: 'French',
+        rating: 'Rating',
+        rating4plus: '4+ Stars',
+        rating3plus: '3+ Stars',
+        clearFilters: 'Clear Filters',
+        resultsCount: 'Showing 1-12 of 48 books',
+        gridView: 'Grid View',
+        listView: 'List View',
+        bookTitle: 'Book Title',
+        authorName: 'Author Name',
+        downloadPdf: 'Download PDF',
+        previous: 'Previous',
+        next: 'Next',
+        copyright: ' 2024 BookStore. All rights reserved.'
+    },
+    ar: {
+        brand: '',
+        home: '',
+        categories: '',
+        about: '',
+        contact: '',
+        language: '',
+        signin: '',
+        register: '',
+        filters: '',
+        genre: '',
+        fiction: '',
+        nonfiction: '',
+        science: '',
+        allLanguages: '',
+        english: '',
+        spanish: '',
+        french: '',
+        rating: '',
+        rating4plus: '4+ ',
+        rating3plus: '3+ ',
+        clearFilters: '',
+        resultsCount: '1-12 48 ',
+        gridView: '',
+        listView: '',
+        bookTitle: '',
+        authorName: '',
+        downloadPdf: 'PDF',
+        previous: '',
+        next: '',
+        copyright: ' 2024 .'
+    }
+};
+
+// Initialize language
+let currentLanguage = localStorage.getItem('language') || 'en';
+document.documentElement.lang = currentLanguage;
+document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+
+// Function to update active language in dropdown
+function updateLanguageUI() {
+    document.querySelectorAll('[data-language]').forEach(el => {
+        el.classList.remove('active');
+        if (el.dataset.language === currentLanguage) {
+            el.classList.add('active');
+        }
+    });
+}
+
+// Function to translate the page
+function translatePage() {
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.dataset.translate;
+        if (translations[currentLanguage][key]) {
+            element.textContent = translations[currentLanguage][key];
+        }
+    });
+}
+
+// Initialize translations
+document.addEventListener('DOMContentLoaded', () => {
+    translatePage();
+    updateLanguageUI();
+
+    // Language selector event listeners
+    document.querySelectorAll('[data-language]').forEach(element => {
+        element.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentLanguage = element.dataset.language;
+            document.documentElement.lang = currentLanguage;
+            document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+            localStorage.setItem('language', currentLanguage);
+            translatePage();
+            updateLanguageUI();
+        });
+    });
+});
+
 // Search handler function
 function handleSearch(query) {
     if (query.trim()) {
