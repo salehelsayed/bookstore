@@ -106,39 +106,47 @@ const translations = {
         downloadPdf: 'Download PDF',
         previous: 'Previous',
         next: 'Next',
-        copyright: ' 2024 BookStore. All rights reserved.'
+        page1: '1',
+        page2: '2',
+        page3: '3',
+        copyright: ' 2024 BookStore. All rights reserved.',
+        searchInput: 'Search for books...'
     },
     ar: {
-        brand: '',
-        home: '',
-        categories: '',
-        about: '',
-        contact: '',
-        language: '',
-        signin: '',
-        register: '',
-        filters: '',
-        genre: '',
-        fiction: '',
-        nonfiction: '',
-        science: '',
-        allLanguages: '',
-        english: '',
-        spanish: '',
-        french: '',
-        rating: '',
-        rating4plus: '4+ ',
-        rating3plus: '3+ ',
-        clearFilters: '',
-        resultsCount: '1-12 48 ',
-        gridView: '',
-        listView: '',
-        bookTitle: '',
-        authorName: '',
-        downloadPdf: 'PDF',
-        previous: '',
-        next: '',
-        copyright: ' 2024 .'
+        brand: 'المكتبة',
+        home: 'الرئيسية',
+        categories: 'التصنيفات',
+        about: 'من نحن',
+        contact: 'اتصل بنا',
+        language: 'اللغة',
+        signin: 'تسجيل الدخول',
+        register: 'حساب جديد',
+        filters: 'التصفية',
+        genre: 'التصنيف',
+        fiction: 'روايات',
+        nonfiction: 'كتب غير روائية',
+        science: 'علوم',
+        allLanguages: 'جميع اللغات',
+        english: 'الإنجليزية',
+        spanish: 'الإسبانية',
+        french: 'الفرنسية',
+        rating: 'التقييم',
+        rating4plus: '٤+ نجوم',
+        rating3plus: '٣+ نجوم',
+        clearFilters: 'مسح التصفية',
+        resultsCount: 'عرض ١-١٢ من ٤٨ كتاب',
+        gridView: 'عرض شبكي',
+        listView: 'عرض قائمة',
+        bookTitle: 'عنوان الكتاب',
+        authorName: 'اسم المؤلف',
+        downloadPdf: 'تحميل PDF',
+        previous: 'السابق',
+        next: 'التالي',
+        page1: '١',
+        page2: '٢',
+        page3: '٣',
+        copyright: '© ٢٠٢٤ المكتبة. جميع الحقوق محفوظة',
+        searchInput: 'ابحث عن الكتب...'
     }
 };
 
@@ -147,14 +155,29 @@ let currentLanguage = localStorage.getItem('language') || 'en';
 document.documentElement.lang = currentLanguage;
 document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
 
-// Function to update active language in dropdown
-function updateLanguageUI() {
-    document.querySelectorAll('[data-language]').forEach(el => {
-        el.classList.remove('active');
-        if (el.dataset.language === currentLanguage) {
-            el.classList.add('active');
-        }
+// Function to set language and update UI
+function setLanguage(lang) {
+    currentLanguage = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    localStorage.setItem('language', lang);
+    
+    // Update language checks
+    document.querySelectorAll('.language-check').forEach(check => {
+        check.style.visibility = 'hidden';
     });
+    const activeCheck = document.querySelector(`.language-check.${lang}`);
+    if (activeCheck) {
+        activeCheck.style.visibility = 'visible';
+    }
+
+    // Update search input placeholder
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+        searchInput.placeholder = translations[currentLanguage].searchInput;
+    }
+
+    translatePage();
 }
 
 // Function to translate the page
@@ -162,26 +185,24 @@ function translatePage() {
     document.querySelectorAll('[data-translate]').forEach(element => {
         const key = element.dataset.translate;
         if (translations[currentLanguage][key]) {
-            element.textContent = translations[currentLanguage][key];
+            if (element.placeholder !== undefined) {
+                element.placeholder = translations[currentLanguage][key];
+            } else {
+                element.textContent = translations[currentLanguage][key];
+            }
         }
     });
 }
 
 // Initialize translations
 document.addEventListener('DOMContentLoaded', () => {
-    translatePage();
-    updateLanguageUI();
+    setLanguage(currentLanguage);
 
     // Language selector event listeners
     document.querySelectorAll('[data-language]').forEach(element => {
         element.addEventListener('click', (e) => {
             e.preventDefault();
-            currentLanguage = element.dataset.language;
-            document.documentElement.lang = currentLanguage;
-            document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
-            localStorage.setItem('language', currentLanguage);
-            translatePage();
-            updateLanguageUI();
+            setLanguage(element.dataset.language);
         });
     });
 });

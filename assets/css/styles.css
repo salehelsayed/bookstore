@@ -140,10 +140,16 @@ main {
 /* RTL Support */
 [dir="rtl"] {
     text-align: right;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+[dir="rtl"] .navbar-nav {
+    padding-right: 0;
 }
 
 [dir="rtl"] .me-2,
-[dir="rtl"] .me-3 {
+[dir="rtl"] .me-3,
+[dir="rtl"] .me-4 {
     margin-right: 0 !important;
     margin-left: 0.5rem !important;
 }
@@ -164,6 +170,42 @@ main {
 [dir="rtl"] .bi {
     margin-right: 0;
     margin-left: 0.5rem;
+}
+
+[dir="rtl"] .form-check {
+    padding-left: 0;
+    padding-right: 1.5em;
+}
+
+[dir="rtl"] .form-check .form-check-input {
+    float: right;
+    margin-left: 0;
+    margin-right: -1.5em;
+}
+
+[dir="rtl"] .rating .bi {
+    margin: 0 0 0 2px;
+}
+
+[dir="rtl"] .card-body {
+    text-align: right;
+}
+
+[dir="rtl"] .pagination {
+    direction: ltr;
+}
+
+/* Arabic Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700&display=swap');
+
+[lang="ar"] {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+[lang="ar"] .btn,
+[lang="ar"] .form-control,
+[lang="ar"] .dropdown-item {
+    font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 /* Active language indicator */
