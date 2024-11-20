@@ -1,144 +1,110 @@
-# 📚 BookStore - Digital PDF Library
+# BookStore - Digital PDF Library
 
-A modern, responsive web application for browsing and downloading PDF books. Built with Bootstrap 5 and following mobile-first design principles.
+A modern, responsive digital bookstore with multilingual support, built using Bootstrap 5.
 
 ## 🌟 Features
 
-### Current Features
-- 🔍 Advanced search functionality
-- 📱 Responsive design for all devices
-- 📚 Grid and list view for book browsing
-- 🎯 Comprehensive filtering system
-  - Genre categories
-  - Language selection
-  - Rating-based filtering
-- 📖 Interactive book cards with:
-  - Cover images
-  - Title and author information
-  - Rating display
-  - Download buttons
-- 🎨 Modern UI with smooth animations
-- 📱 Mobile-friendly navigation
+### 📚 Core Features
+- Digital PDF book library
+- Responsive, mobile-first design
+- Advanced search functionality
+- Book categorization and filtering
+- User authentication system (coming soon)
+- PDF download capability (coming soon)
 
-### Upcoming Features
-- 🔐 User authentication
-- 👤 User profiles
-- 📊 Admin dashboard
-- 💾 PDF management system
-- 📈 Analytics tracking
+### 🌐 Internationalization
+- Complete Arabic language support
+- RTL (Right-to-Left) layout support
+- Dynamic language switching
+- Persistent language preferences
+- Bilingual search functionality
+- Arabic font integration (Noto Sans Arabic)
 
 ## 🛠️ Technology Stack
 
 - **Frontend Framework:** Bootstrap 5.3.2
 - **Icons:** Bootstrap Icons 1.11.1
-- **JavaScript:** Vanilla ES6+
-- **CSS:** Custom CSS with variables
-- **Responsive Design:** Mobile-first approach
+- **Fonts:** Google Fonts (Noto Sans Arabic)
+- **Version Control:** Git
+
+## 📦 Dependencies
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<!-- Google Fonts - Noto Sans Arabic -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Modern web browser
-- Basic HTTP server (optional)
-
-### Installation
-
 1. Clone the repository:
-```bash
-git clone https://github.com/salehelsayed/bookstore.git
-```
+   ```bash
+   git clone https://github.com/yourusername/bookstore.git
+   ```
 
-2. Navigate to the project directory:
-```bash
-cd bookstore
-```
+2. Open `index.html` in your browser
 
-3. Open the website:
-   - **Option 1:** Double-click `index.html`
-   - **Option 2:** Use Python's HTTP server:
-     ```bash
-     python -m http.server 8000
-     ```
-     Then visit `http://localhost:8000`
+3. No build process required - it's a static website!
 
-## 📂 Project Structure
+## 🌍 Language Support
 
-```
-bookstore/
-├── assets/
-│   ├── css/
-│   │   └── styles.css      # Custom styles
-│   └── js/
-│       └── main.js         # JavaScript functionality
-├── index.html              # Main HTML file
-└── README.md              # Project documentation
-```
+The website currently supports:
+- English (default)
+- Arabic (with RTL support)
 
-## 💻 Usage
+Language features include:
+- Automatic text direction switching
+- Font family switching
+- Persistent language selection
+- Complete UI translation
 
-1. **Search Books:**
-   - Use the search bar to find books by title, author, or keyword
-   - Results update dynamically
+## 🎯 Project Status
 
-2. **Filter Results:**
-   - Use sidebar filters to narrow down results
-   - Filter by genre, language, and rating
-   - Clear all filters with one click
+### Completed
+- ✅ Basic project structure
+- ✅ Responsive layout
+- ✅ Navigation system
+- ✅ Search UI
+- ✅ Filtering system UI
+- ✅ Book grid layout
+- ✅ Arabic language support
+- ✅ RTL layout support
+- ✅ Language switching functionality
+- ✅ Bilingual search
 
-3. **View Options:**
-   - Toggle between grid and list views
-   - Grid view for visual browsing
-   - List view for detailed information
+### In Progress
+- 🔄 User authentication system
+- 🔄 Book database integration
+- 🔄 PDF download functionality
+- 🔄 Additional language support
 
-4. **Download Books:**
-   - Click the download button on any book card
-   - PDF format available for all books
-
-## 🎨 Design Features
-
-- Clean, modern interface
-- Consistent color scheme
-- Responsive grid system
-- Interactive hover effects
-- Smooth transitions
-- Accessible design elements
-
-## 🔧 Development
-
-### Setup Development Environment
-1. Fork the repository
-2. Clone your fork
-3. Make changes
-4. Submit pull requests
-
-### Coding Standards
-- Follow mobile-first approach
-- Maintain consistent code style
-- Document all functions
-- Test across different devices
-
-## 📱 Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
+### Planned
+- 📋 User reviews and ratings
+- 📋 Advanced search filters
+- 📋 Social sharing features
+- 📋 Personal reading lists
 
 ## 🤝 Contributing
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/YourFeature`
+3. Commit your changes: `git commit -m 'Add YourFeature'`
+4. Push to the branch: `git push origin feature/YourFeature`
+5. Open a pull request
 
 ## 📄 License
 
-© 2024 BookStore. All rights reserved.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 👥 Contact
+## 👥 Authors
 
-Saleh Elsayed - [GitHub Profile](https://github.com/salehelsayed)
+- Your Name - *Initial work* - [YourGithub](https://github.com/yourusername)
 
-Project Link: [https://github.com/salehelsayed/bookstore](https://github.com/salehelsayed)
+## 🙏 Acknowledgments
+
+- Bootstrap team for the amazing framework
+- Google Fonts for Noto Sans Arabic
+- Bootstrap Icons for the icon set
