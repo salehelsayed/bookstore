@@ -72,20 +72,123 @@ body {
     font-size: 0.9rem;
 }
 
-/* Book Card Rating Styles */
-.book-card .rating {
+/* Rating container and alignment */
+.rating-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.rating {
     display: inline-flex !important;
-    gap: 2px;
     direction: ltr;
+    align-items: center;
 }
 
-.book-card .rating .bi {
-    font-size: 0.9rem;
+.rating-text {
+    color: #6c757d;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 8px;
 }
 
-[dir="rtl"] .book-card .d-flex.align-items-center {
-    display: flex !important;
+/* Star icons */
+.rating .bi {
+    font-size: 1rem;
+    width: 1em;
+    height: 1em;
+}
+
+/* RTL specific styles */
+[dir="rtl"] .rating-container {
     flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+[dir="rtl"] .rating {
+    order: 2;
+    margin-right: auto;
+}
+
+[dir="rtl"] .rating-text {
+    order: 1;
+    margin-left: 0;
+    margin-right: 8px;
+}
+
+/* Font families */
+[dir="rtl"] .rating-count,
+[dir="rtl"] .rating-label {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+[dir="ltr"] .rating-count,
+[dir="ltr"] .rating-label {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* RTL-specific styles */
+[dir="rtl"] .card-body {
+    text-align: right;
+}
+
+[dir="rtl"] .card-title,
+[dir="rtl"] .card-text,
+[dir="rtl"] .author-name,
+[dir="rtl"] .rating-text {
+    text-align: right;
+    direction: rtl;
+    width: 100%;
+    display: block;
+}
+
+[dir="rtl"] .rating-container {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+[dir="rtl"] .rating {
+    order: 2;
+    margin-right: auto;
+}
+
+[dir="rtl"] .rating-text {
+    order: 1;
+    flex-direction: row;
+}
+
+[dir="rtl"] .rating {
+    margin: 0;
+}
+
+[dir="rtl"] .rating .bi + .bi {
+    margin-left: 0;
+    margin-right: 2px;
+}
+
+[dir="rtl"] .rating-number {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+/* RTL-specific styles */
+[dir="rtl"] .book-card .d-flex.align-items-center {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+[dir="rtl"] .book-card .text-muted {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .book-card .me-2 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 [dir="rtl"] .book-card .rating {
@@ -475,8 +578,120 @@ main {
     gap: 4px;
 }
 
+/* Filter Rating Styles */
+.rating-filter .form-check {
+    position: relative;
+    margin-bottom: 0.5rem;
+    min-height: 24px;
+    padding-left: 1.5rem;
+}
+
+.rating-filter .form-check-input {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+}
+
+.rating-filter .form-check-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 24px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.rating-filter .rating-container {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+.rating-filter .rating {
+    display: inline-flex;
+    align-items: center;
+}
+
+.rating-filter span[data-translate] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* RTL specific styles for filter ratings */
+[dir="rtl"] .rating-filter .form-check {
+    padding-left: 0;
+    padding-right: 1.5rem;
+}
+
+[dir="rtl"] .rating-filter .form-check-input {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .rating-filter .form-check-label {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .rating-filter .rating-container {
+    flex-direction: row-reverse;
+}
+
 /* Footer Styles */
 .footer {
     margin-top: auto;
     background-color: var(--background-color);
+}
+
+/* Ensure text is visible */
+.text-warning {
+    color: #ffc107 !important;
+}
+
+[dir="rtl"] .card-text {
+    margin-bottom: 0.5rem;
+}
+
+/* Review Count Styles */
+.review-count {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+[dir="rtl"] .review-count {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+/* Ensure the number stays LTR even in RTL mode */
+.review-count {
+    unicode-bidi: embed;
+    direction: ltr;
+    display: inline-block;
+}
+
+.rating-count {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    direction: rtl;
+    display: inline-block;
+}
+
+.rating-label {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    direction: rtl;
+    display: inline-block;
+}
+
+[dir="rtl"] .rating-container {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+[dir="rtl"] .rating {
+    order: 2;
+    margin-right: auto;
+}
+
+[dir="rtl"] .rating-text {
+    order: 1;
+    flex-direction: row;
 }

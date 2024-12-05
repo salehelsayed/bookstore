@@ -28,9 +28,9 @@ export const ar = {
     rating: 'التقييم',
     
     // Book Details
-    bookTitle: 'المغامرة العظيمة',
+    bookTitle: 'عنوان الكتاب',
     author: 'المؤلف',
-    authorName: 'جون سميث',
+    authorName: 'اسم المؤلف',
     publisher: 'الناشر',
     publisherName: 'اسم الناشر',
     published: 'تاريخ النشر',
@@ -55,7 +55,8 @@ export const ar = {
     clickToRate: 'انقر للتقييم',
     by: 'تأليف',
     ratings: 'تقييم',
-    ratingCount: '١٬٢٣٤',
+    ratingCount: '١,٢٣٤',
+    reviewCount: 'تقييم 125',
     aboutAuthor: 'عن المؤلف',
     authorBio: 'جون سميث هو مؤلف حائز على جوائز.',
     
@@ -71,7 +72,7 @@ export const ar = {
     commentPlaceholder: 'شارك رأيك حول هذا الكتاب...',
     postComment: 'نشر التعليق',
     loadMore: 'تحميل المزيد',
-    daysAgo: 'يوم مضى',
+    daysAgo: 'منذ 0 أيام',
     weekAgo: 'أسبوع مضى',
     reply: 'رد',
     like: 'إعجاب',

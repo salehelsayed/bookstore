@@ -26,13 +26,21 @@ let translations = {};
 // Function to load translations for current page
 async function loadTranslations(language) {
     try {
-        // Load core translations first
-        const coreModule = await import(`./translations/core/${language}.js`)
+        // Load main translations first
+        const mainModule = await import(`./translations/${language}.js`)
             .catch(error => {
-                console.error('Failed to load core translations:', error);
-                throw new Error('Core translations are required');
+                console.error('Failed to load main translations:', error);
+                throw new Error('Main translations are required');
             });
-        translations = { ...coreModule[language] };
+        translations = { ...mainModule[language] };
+
+        // Load core translations if available
+        try {
+            const coreModule = await import(`./translations/core/${language}.js`);
+            translations = { ...translations, ...coreModule[language] };
+        } catch (error) {
+            console.warn('Failed to load core translations:', error);
+        }
 
         // Load category translations if on category page
         if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
@@ -139,6 +147,129 @@ async function changeLanguage(language) {
     }
 }
 
+// Function to create star rating HTML
+function createStarRating(rating, showNumber = true, maxStars = 5) {
+    // Round to nearest half
+    const roundedRating = Math.round(rating * 2) / 2;
+    
+    const container = document.createElement('div');
+    container.className = 'rating-container';
+    
+    // Create stars container
+    const starsContainer = document.createElement('div');
+    starsContainer.className = 'rating';
+    
+    // Add stars
+    for (let i = 1; i <= maxStars; i++) {
+        const star = document.createElement('i');
+        if (i <= roundedRating) {
+            star.className = 'bi bi-star-fill text-warning';
+        } else if (i - 0.5 === roundedRating) {
+            star.className = 'bi bi-star-half text-warning';
+        } else {
+            star.className = 'bi bi-star text-warning';
+        }
+        starsContainer.appendChild(star);
+    }
+    
+    container.appendChild(starsContainer);
+    
+    // Add rating count
+    if (showNumber) {
+        const ratingText = document.createElement('div');
+        ratingText.className = 'rating-text';
+        
+        const ratingCount = document.createElement('span');
+        ratingCount.className = 'rating-count';
+        ratingCount.setAttribute('data-translate', 'ratingCount');
+        
+        const ratingLabel = document.createElement('span');
+        ratingLabel.className = 'rating-label';
+        ratingLabel.setAttribute('data-translate', 'ratings');
+        
+        ratingText.appendChild(ratingCount);
+        ratingText.appendChild(document.createTextNode(' '));
+        ratingText.appendChild(ratingLabel);
+        
+        container.appendChild(ratingText);
+    }
+    
+    return container;
+}
+
+// Function to create filter ratings
+function createFilterRatings() {
+    const ratingFilter = document.querySelector('.rating-filter');
+    if (!ratingFilter) return;
+
+    // Clear existing content
+    ratingFilter.innerHTML = '';
+
+    // Create 4+ stars rating
+    const rating4Div = document.createElement('div');
+    rating4Div.className = 'form-check';
+    
+    const input4 = document.createElement('input');
+    input4.className = 'form-check-input';
+    input4.type = 'radio';
+    input4.name = 'rating';
+    input4.id = 'rating4';
+    
+    const label4 = document.createElement('label');
+    label4.className = 'form-check-label';
+    label4.htmlFor = 'rating4';
+    
+    const stars4 = createStarRating(4, false);
+    const text4 = document.createElement('span');
+    text4.setAttribute('data-translate', 'fourPlus');
+    
+    rating4Div.appendChild(input4);
+    label4.appendChild(stars4);
+    label4.appendChild(text4);
+    rating4Div.appendChild(label4);
+
+    // Create 3+ stars rating
+    const rating3Div = document.createElement('div');
+    rating3Div.className = 'form-check';
+    
+    const input3 = document.createElement('input');
+    input3.className = 'form-check-input';
+    input3.type = 'radio';
+    input3.name = 'rating';
+    input3.id = 'rating3';
+    
+    const label3 = document.createElement('label');
+    label3.className = 'form-check-label';
+    label3.htmlFor = 'rating3';
+    
+    const stars3 = createStarRating(3, false);
+    const text3 = document.createElement('span');
+    text3.setAttribute('data-translate', 'threePlus');
+    
+    rating3Div.appendChild(input3);
+    label3.appendChild(stars3);
+    label3.appendChild(text3);
+    rating3Div.appendChild(label3);
+
+    // Add to filter container
+    ratingFilter.appendChild(rating4Div);
+    ratingFilter.appendChild(rating3Div);
+}
+
+// Update this function to handle translations
+function updateBookCardRatings() {
+    document.querySelectorAll('.book-card').forEach(card => {
+        const rating = parseFloat(card.dataset.rating) || 4; // Default to 4 if not set
+        const ratingContainer = card.querySelector('.rating-container');
+        if (ratingContainer) {
+            const newRating = createStarRating(rating);
+            ratingContainer.replaceWith(newRating);
+        }
+    });
+    // Update translations after replacing ratings
+    applyTranslations();
+}
+
 // Initialize translations
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('DOM fully loaded and parsed');
@@ -172,6 +303,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
         console.error('Language selector not found');
     }
+
+    // Initialize ratings
+    createFilterRatings();
+    updateBookCardRatings();
+    
+    // Update ratings when language changes
+    window.addEventListener('languageChanged', () => {
+        createFilterRatings();
+        updateBookCardRatings();
+    });
 
     // Add image loading handlers
     const bookImages = document.querySelectorAll('.book-card img');

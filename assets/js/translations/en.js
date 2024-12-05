@@ -26,6 +26,8 @@ export const en = {
     gridView: 'Grid View',
     listView: 'List View',
     rating: 'Rating',
+    fourPlus: '4+ stars',
+    threePlus: '3+ stars',
     
     // Book Details
     bookTitle: 'The Great Adventure',
@@ -54,10 +56,15 @@ export const en = {
     ratingHint: 'Click for full stars, click between stars for half ratings',
     clickToRate: 'Click to Rate',
     by: 'By',
-    ratings: 'ratings',
-    ratingCount: '1,234',
+    ratings: 'Reviews',
+    ratingCount: '1,234 ratings',
+    reviewCount: '125 Reviews',
     aboutAuthor: 'About the Author',
     authorBio: 'John Smith is an award-winning author.',
+    
+    // Book Card
+    bookTitle: 'Book Title',
+    authorName: 'Author Name',
     
     // Comments Section
     comments: 'Comments',

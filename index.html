@@ -204,26 +204,26 @@
                 <div class="row g-4" id="books-grid">
                     <!-- Sample Book Card -->
                     <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="card h-100 book-card">
+                        <div class="card h-100 book-card" data-rating="4">
                             <img src="./assets/images/placeholder.jpg" class="card-img-top" alt="Book Cover">
                             <div class="card-body">
-                                <h5 class="card-title" data-translate="bookTitle">Book Title</h5>
-                                <p class="card-text text-muted" data-translate="authorName">Author Name</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="rating d-inline-block me-2">
+                                <h5 class="card-title" data-translate="bookTitle">عنوان الكتاب</h5>
+                                <p class="card-text author-name" data-translate="authorName">اسم المؤلف</p>
+                                <div class="d-flex align-items-center rating-container">
+                                    <div class="rating">
                                         <i class="bi bi-star-fill text-warning"></i>
                                         <i class="bi bi-star-fill text-warning"></i>
                                         <i class="bi bi-star-fill text-warning"></i>
                                         <i class="bi bi-star-fill text-warning"></i>
                                         <i class="bi bi-star text-warning"></i>
                                     </div>
-                                    <small class="text-muted">
-                                        <span>2</span>
-                                        <span data-translate="daysAgo">days ago</span>
+                                    <small class="text-muted rating-text">
+                                        <span class="rating-number">2</span>
+                                        <span class="rating-time" data-translate="daysAgo">days ago</span>
                                     </small>
                                 </div>
                                 <button class="btn btn-primary w-100" data-translate="downloadPdf">
-                                    <i class="bi bi-download"></i> Download PDF
+                                    <i class="bi bi-download"></i> تحميل PDF
                                 </button>
                             </div>
                         </div>
