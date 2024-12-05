@@ -72,6 +72,33 @@ body {
     font-size: 0.9rem;
 }
 
+/* Book Card Rating Styles */
+.book-card .rating {
+    display: inline-flex !important;
+    gap: 2px;
+    direction: ltr;
+}
+
+.book-card .rating .bi {
+    font-size: 0.9rem;
+}
+
+[dir="rtl"] .book-card .d-flex.align-items-center {
+    display: flex !important;
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .book-card .rating {
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+[dir="rtl"] .book-card small.text-muted {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
 /* View Toggle Styles */
 .view-options .btn-group .btn {
     padding: 0.375rem 0.75rem;
@@ -180,6 +207,13 @@ main {
 .rating-input {
     direction: ltr;
     text-align: inherit;
+    display: inline-flex;
+    align-items: center;
+}
+
+[dir="rtl"] .rating-input {
+    display: inline-flex;
+    direction: ltr;
 }
 
 [dir="rtl"] .rating-input .stars-container {
@@ -201,9 +235,43 @@ main {
     direction: rtl;
 }
 
-[dir="rtl"] .comment-actions .btn {
+/* Fix for comment ratings in RTL */
+[dir="rtl"] .comments-list .rating {
+    display: inline-flex !important;
+    direction: ltr !important;
     margin-right: 0;
     margin-left: 0.5rem;
+}
+
+[dir="rtl"] .comments-list .rating .bi {
+    margin: 0 !important;
+    padding: 0 1px;
+}
+
+[dir="rtl"] .comments-list .d-flex.align-items-center {
+    gap: 0.5rem;
+}
+
+/* Ensure consistent spacing in both RTL and LTR */
+.comments-list .rating .bi {
+    padding: 0 1px;
+}
+
+.comments-list .rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+/* Fix for buttons in comments */
+[dir="rtl"] .comments-list .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+[dir="rtl"] .comments-list .btn .bi {
+    margin: 0;
 }
 
 /* Arabic Font */
@@ -269,6 +337,33 @@ main {
 .rating-input small[data-translate="ratingHint"] {
     color: #6c757d;
     font-style: italic;
+}
+
+/* Star Rating Styles - Consistent across all pages */
+.rating {
+    display: inline-flex !important;
+    gap: 2px;
+    direction: ltr;
+    margin-inline-end: 8px;
+}
+
+.rating .bi {
+    font-size: 1rem;
+}
+
+[dir="rtl"] .rating {
+    margin-inline-start: 8px;
+    margin-inline-end: 0;
+}
+
+[dir="rtl"] .d-flex.align-items-center {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] small.text-muted {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 /* Comments Section Styles */
@@ -354,6 +449,30 @@ main {
 [dir="rtl"] .rating-input .rating-star {
     padding: 0 2px;
     margin: 0;
+}
+
+/* Comment Rating Styles */
+.comments-list .rating {
+    display: inline-flex !important;
+    gap: 2px;
+    direction: ltr;
+    margin: 0 8px;
+}
+
+[dir="rtl"] .comments-list .d-flex.align-items-center {
+    display: flex !important;
+    flex-direction: row-reverse;
+    gap: 8px;
+}
+
+[dir="rtl"] .comments-list .rating {
+    margin: 0;
+}
+
+[dir="rtl"] .comments-list small.text-muted {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 /* Footer Styles */
