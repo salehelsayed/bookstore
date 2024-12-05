@@ -143,24 +143,28 @@ main {
     font-family: 'Noto Sans Arabic', sans-serif;
 }
 
-[dir="rtl"] .navbar-nav {
-    padding-right: 0;
-}
-
-[dir="rtl"] .me-2,
-[dir="rtl"] .me-3,
-[dir="rtl"] .me-4 {
+[dir="rtl"] .me-2 {
     margin-right: 0 !important;
     margin-left: 0.5rem !important;
 }
 
 [dir="rtl"] .me-3 {
+    margin-right: 0 !important;
     margin-left: 1rem !important;
 }
 
-[dir="rtl"] .ms-auto {
-    margin-right: auto !important;
+[dir="rtl"] .ms-2 {
     margin-left: 0 !important;
+    margin-right: 0.5rem !important;
+}
+
+[dir="rtl"] .ms-3 {
+    margin-left: 0 !important;
+    margin-right: 1rem !important;
+}
+
+[dir="rtl"] .navbar-nav {
+    padding-right: 0;
 }
 
 [dir="rtl"] .dropdown-menu {
@@ -168,31 +172,38 @@ main {
 }
 
 [dir="rtl"] .bi {
-    margin-right: 0;
     margin-left: 0.5rem;
+    margin-right: 0;
 }
 
-[dir="rtl"] .form-check {
-    padding-left: 0;
-    padding-right: 1.5em;
+/* Rating Stars - Always LTR */
+.rating-input {
+    direction: ltr;
+    text-align: inherit;
 }
 
-[dir="rtl"] .form-check .form-check-input {
-    float: right;
-    margin-left: 0;
-    margin-right: -1.5em;
+[dir="rtl"] .rating-input .stars-container {
+    direction: ltr;
+    display: inline-flex;
 }
 
-[dir="rtl"] .rating .bi {
-    margin: 0 0 0 2px;
+[dir="rtl"] .rating-input small[data-translate="ratingHint"] {
+    direction: rtl;
+    text-align: inherit;
 }
 
-[dir="rtl"] .card-body {
+/* Comments section RTL fixes */
+[dir="rtl"] .comments-list .card-body {
     text-align: right;
 }
 
-[dir="rtl"] .pagination {
-    direction: ltr;
+[dir="rtl"] .comment-actions {
+    direction: rtl;
+}
+
+[dir="rtl"] .comment-actions .btn {
+    margin-right: 0;
+    margin-left: 0.5rem;
 }
 
 /* Arabic Font */
@@ -258,11 +269,6 @@ main {
 .rating-input small[data-translate="ratingHint"] {
     color: #6c757d;
     font-style: italic;
-}
-
-/* For RTL support */
-[dir="rtl"] .rating-input .stars-container {
-    direction: ltr;
 }
 
 /* Comments Section Styles */

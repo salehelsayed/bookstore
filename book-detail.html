@@ -12,6 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Adjust star spacing for Arabic version */
+        html[dir="rtl"] .rating i.bi {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -40,14 +47,11 @@
                 </ul>
                 <div class="d-flex align-items-center">
                     <!-- Language Selector -->
-                    <div class="dropdown me-3">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="languageSelector" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-globe"></i> <span data-translate="language">Language</span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="languageSelector">
-                            <li><a class="dropdown-item" href="#" data-language="en"><i class="bi bi-check language-check en"></i> English</a></li>
-                            <li><a class="dropdown-item" href="#" data-language="ar"><i class="bi bi-check language-check ar"></i> العربية</a></li>
-                        </ul>
+                    <div class="dropdown ms-2">
+                        <select id="languageSelect" class="form-select">
+                            <option value="en" data-translate="english">English</option>
+                            <option value="ar" data-translate="arabic">Arabic</option>
+                        </select>
                     </div>
                     <button class="btn btn-outline-primary me-2" data-translate="signin">Sign In</button>
                     <button class="btn btn-primary" data-translate="register">Register</button>
@@ -63,7 +67,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html" data-translate="home">Home</a></li>
                 <li class="breadcrumb-item"><a href="#" data-translate="bookCategory">Fiction</a></li>
-                <li class="breadcrumb-item active" aria-current="page" data-translate="bookTitle">Book Title</li>
+                <li class="breadcrumb-item active" aria-current="page" data-translate="bookTitle">The Great Adventure</li>
             </ol>
         </nav>
 
@@ -72,7 +76,7 @@
             <!-- Book Cover -->
             <div class="col-md-4 mb-4">
                 <div class="card mb-4">
-                    <img src="https://via.placeholder.com/400x600" class="card-img-top" alt="Book Cover">
+                    <img src="./assets/images/placeholder400600.jpg" class="card-img-top" alt="Book Cover">
                     <div class="card-body text-center">
                         <button class="btn btn-primary btn-lg w-100" data-translate="downloadPdf">
                             <i class="bi bi-download"></i> Download PDF
@@ -80,27 +84,13 @@
                         <div class="mt-3">
                             <span class="text-muted" data-translate="fileSize">File size: 2.5 MB</span>
                         </div>
-                        <div class="rating-input mt-3">
-                            <p class="mb-2" data-translate="rateBook">Rate this book:</p>
-                            <small class="text-muted d-block mb-2" data-translate="ratingHint">Click the stars to rate (half or full stars)</small>
+                        <div class="rating-input mb-3">
                             <div class="stars-container">
-                                <span class="star" data-rating="1">
-                                    <i class="bi bi-star-fill"></i>
-                                </span>
-                                <span class="star" data-rating="2">
-                                    <i class="bi bi-star-fill"></i>
-                                </span>
-                                <span class="star" data-rating="3">
-                                    <i class="bi bi-star-fill"></i>
-                                </span>
-                                <span class="star" data-rating="4">
-                                    <i class="bi bi-star-fill"></i>
-                                </span>
-                                <span class="star" data-rating="5">
-                                    <i class="bi bi-star-fill"></i>
-                                </span>
+                                <div class="rating" data-rating="0">
+                                    <!-- Stars will be added dynamically -->
+                                </div>
                             </div>
-                            <small class="text-muted mt-2 d-block" id="rating-message" data-translate="clickToRate">Click to rate</small>
+                            <small class="d-block mt-1" data-translate="ratingHint">Click for full stars, click between stars for half ratings</small>
                         </div>
                     </div>
                 </div>
@@ -110,12 +100,28 @@
                     <div class="card-body">
                         <h5 class="card-title mb-3" data-translate="bookDetails">Book Details</h5>
                         <div class="book-details">
-                            <p><strong data-translate="publisher">Publisher:</strong> <span data-translate="publisherName">Publisher Name</span></p>
-                            <p><strong data-translate="publicationDate">Publication Date:</strong> <span>January 1, 2023</span></p>
-                            <p><strong data-translate="language">Language:</strong> <span data-translate="bookLanguage">English</span></p>
-                            <p><strong data-translate="pages">Pages:</strong> <span>350</span></p>
-                            <p><strong data-translate="isbn">ISBN:</strong> <span>978-3-16-148410-0</span></p>
-                            <p class="mb-0"><strong data-translate="category">Category:</strong> <span data-translate="bookCategory">Fiction</span></p>
+                            <h4 class="mb-3" data-translate="description">Description</h4>
+                            <p class="text-muted" data-translate="bookDescription">A thrilling adventure that takes you through magical worlds filled with excitement and wonder. Experience a unique story that blends fantasy and reality.</p>
+                            
+                            <!-- Book Metadata -->
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h5 class="mb-3" data-translate="genre">Genre</h5>
+                                    <p class="text-muted" data-translate="fiction">Fiction</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="mb-3" data-translate="bookLanguage">Book Language</h5>
+                                    <p class="text-muted" data-translate="english">English</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="mb-3" data-translate="publisher">Publisher</h5>
+                                    <p class="text-muted" data-translate="publisherName">Publisher Name</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="mb-3" data-translate="publishDate">Publish Date</h5>
+                                    <p class="text-muted" data-translate="publishDateValue">January 1, 2023</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,49 +129,53 @@
 
             <!-- Book Information -->
             <div class="col-md-8">
-                <h1 class="mb-3" data-translate="bookTitle">Book Title</h1>
+                <h1 class="mb-3" data-translate="bookTitle">The Great Adventure</h1>
                 <div class="d-flex align-items-center mb-3">
                     <span class="me-2" data-translate="by">By</span>
-                    <h5 class="mb-0" data-translate="authorName">Author Name</h5>
+                    <a href="#" class="text-decoration-none" data-translate="authorName">John Smith</a>
                 </div>
                 
                 <!-- Rating -->
                 <div class="mb-4">
-                    <div class="rating d-flex align-items-center">
-                        <div class="stars me-2">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-half text-warning"></i>
+                    <div class="rating d-inline-block me-2">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-half text-warning"></i>
+                    </div>
+                    <span class="text-muted">
+                        <span data-translate="ratingCount">1,234</span>
+                        <span data-translate="ratings">ratings</span>
+                    </span>
+                </div>
+                
+                <!-- Book Details -->
+                <div class="book-details mb-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong data-translate="publisher">Publisher:</strong> <span data-translate="publisherName">Publisher Name</span></p>
+                            <p><strong data-translate="published">Published:</strong> <span data-translate="publishDate">January 1, 2023</span></p>
+                            <p><strong data-translate="pages">Pages:</strong> <span data-translate="pageCount">350</span></p>
                         </div>
-                        <div class="rating-stats">
-                            <span class="rating-score fw-bold">4.5</span>
-                            <span class="text-muted mx-1">•</span>
-                            <span class="review-count text-muted" data-translate="reviewCount">245 reviews</span>
-                            <span class="text-muted mx-1">•</span>
-                            <span class="rating-count text-muted" data-translate="ratingCount">1,234 ratings</span>
+                        <div class="col-md-6">
+                            <p><strong data-translate="isbn">ISBN:</strong> <span>978-3-16-148410-0</span></p>
+                            <p><strong data-translate="category">Category:</strong> <span data-translate="categoryName">Fiction</span></p>
+                            <p><strong data-translate="language">Language:</strong> <span data-translate="bookLanguage">English</span></p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Book Description -->
-                <div class="book-description mb-4">
-                    <h4 class="mb-3" data-translate="description">Description</h4>
-                    <p class="text-justify" data-translate="bookDescription">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </p>
+                
+                <!-- Description -->
+                <div class="description mb-4">
+                    <h3 class="h5 mb-3" data-translate="description">Description</h3>
+                    <p data-translate="bookDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
-
-                <!-- Author Info -->
-                <div class="author-info mb-4">
-                    <h4 class="mb-3" data-translate="aboutAuthor">About the Author</h4>
-                    <p class="text-justify" data-translate="authorBio">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        The author has written several bestselling books and is a recipient of multiple literary awards.
-                    </p>
+                
+                <!-- Author Bio -->
+                <div class="author-bio mb-4">
+                    <h3 class="h5 mb-3" data-translate="aboutAuthor">About the Author</h3>
+                    <p data-translate="authorBio">John Smith is an award-winning author known for his captivating storytelling and vivid imagination. He has written numerous bestsellers and has been translated into over 20 languages.</p>
                 </div>
             </div>
         </div>
@@ -245,9 +255,9 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="d-flex mb-3">
-                            <img src="https://via.placeholder.com/40" class="rounded-circle me-3" alt="User Avatar">
+                            <img src="./assets/images/placeholder.jpg" class="rounded-circle me-3" alt="User Avatar" style="width: 40px; height: 40px; object-fit: cover;">
                             <div>
-                                <h6 class="mb-1">John Doe</h6>
+                                <h6 class="mb-1" data-translate="commenter1Name">John Doe</h6>
                                 <div class="d-flex align-items-center">
                                     <div class="rating me-2">
                                         <i class="bi bi-star-fill text-warning"></i>
@@ -256,14 +266,14 @@
                                         <i class="bi bi-star-fill text-warning"></i>
                                         <i class="bi bi-star text-warning"></i>
                                     </div>
-                                    <small class="text-muted">2 days ago</small>
+                                    <small class="text-muted"><span>2</span> <span data-translate="daysAgo">days ago</span></small>
                                 </div>
                             </div>
                         </div>
-                        <p class="card-text">This book was absolutely amazing! The character development was outstanding, and the plot kept me engaged throughout. I couldn't put it down!</p>
+                        <p class="card-text" data-translate="comment1Text">This book was absolutely amazing! The character development was outstanding, and the plot kept me engaged throughout. I couldn't put it down!</p>
                         <div class="d-flex align-items-center">
                             <button class="btn btn-sm btn-outline-secondary me-2">
-                                <i class="bi bi-hand-thumbs-up"></i> <span>24</span>
+                                <i class="bi bi-hand-thumbs-up"></i> <span data-translate="like">Like</span> <span>24</span>
                             </button>
                             <button class="btn btn-sm btn-outline-secondary me-2">
                                 <i class="bi bi-reply"></i> <span data-translate="reply">Reply</span>
@@ -275,15 +285,15 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex mb-2">
-                                        <img src="https://via.placeholder.com/40" class="rounded-circle me-3" alt="User Avatar">
+                                        <img src="./assets/images/placeholder.jpg" class="rounded-circle me-3" alt="User Avatar" style="width: 40px; height: 40px; object-fit: cover;">
                                         <div>
-                                            <h6 class="mb-1">Jane Smith</h6>
-                                            <small class="text-muted">1 day ago</small>
+                                            <h6 class="mb-1" data-translate="commenter2Name">Jane Smith</h6>
+                                            <small class="text-muted"><span>1</span> <span data-translate="daysAgo">days ago</span></small>
                                         </div>
                                     </div>
-                                    <p class="card-text mb-2">I completely agree! The ending was particularly well-crafted.</p>
+                                    <p class="card-text mb-2" data-translate="comment2Text">I completely agree! The ending was particularly well-crafted.</p>
                                     <button class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-hand-thumbs-up"></i> <span>12</span>
+                                        <i class="bi bi-hand-thumbs-up"></i> <span data-translate="like">Like</span> <span>12</span>
                                     </button>
                                 </div>
                             </div>
@@ -295,9 +305,9 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="d-flex mb-3">
-                            <img src="https://via.placeholder.com/40" class="rounded-circle me-3" alt="User Avatar">
+                            <img src="./assets/images/placeholder.jpg" class="rounded-circle me-3" alt="User Avatar" style="width: 40px; height: 40px; object-fit: cover;">
                             <div>
-                                <h6 class="mb-1">Sarah Johnson</h6>
+                                <h6 class="mb-1" data-translate="commenter3Name">Sarah Johnson</h6>
                                 <div class="d-flex align-items-center">
                                     <div class="rating me-2">
                                         <i class="bi bi-star-fill text-warning"></i>
@@ -306,14 +316,14 @@
                                         <i class="bi bi-star text-warning"></i>
                                         <i class="bi bi-star text-warning"></i>
                                     </div>
-                                    <small class="text-muted">1 week ago</small>
+                                    <small class="text-muted"><span>1</span> <span data-translate="weekAgo">week ago</span></small>
                                 </div>
                             </div>
                         </div>
-                        <p class="card-text">While the writing style was good, I found some parts of the story a bit slow. The ending made up for it though!</p>
+                        <p class="card-text" data-translate="comment3Text">While the writing style was good, I found some parts of the story a bit slow. The ending made up for it though!</p>
                         <div class="d-flex align-items-center">
                             <button class="btn btn-sm btn-outline-secondary me-2">
-                                <i class="bi bi-hand-thumbs-up"></i> <span>8</span>
+                                <i class="bi bi-hand-thumbs-up"></i> <span data-translate="like">Like</span> <span>8</span>
                             </button>
                             <button class="btn btn-sm btn-outline-secondary me-2">
                                 <i class="bi bi-reply"></i> <span data-translate="reply">Reply</span>
