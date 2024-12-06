@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const bookImages = document.querySelectorAll('.book-card img');
     bookImages.forEach(img => {
         img.addEventListener('error', function() {
-            this.src = 'assets/images/placeholder.jpg';
+            this.src = '/assets/images/placeholder.jpg';
         });
         
         // Add loading class
